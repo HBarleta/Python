@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground</title>
+</head>
+<style>
+    h1 {
+        text-align: center;
+        margin: 50px;
+    }
+
+    .blue-box {
+        height: 100px;
+        width: 100px;
+        border: 2px solid black;
+        border-radius: 10%;
+        background-color: lightblue;
+    }
+    .container {
+        display:flex;
+        justify-content: space-evenly;
+    }
+</style>
+<body>
+    <h1>Welcome!</h1>
+    <div class="container">
+        {% for divs in range(0,3) %}
+        <div class="blue-box"></div>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>
