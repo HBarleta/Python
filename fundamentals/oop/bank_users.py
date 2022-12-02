@@ -75,7 +75,7 @@ class BankAccount:
     @classmethod
     def display_all_balances(cls):
         print("Account Balances for all accounts")
-        print("*********************************")
+        print("****************************")
         for account in cls.Total_Accounts:
             print(f"Account Balance : ${account.balance}")
             print("------------------------")
@@ -89,7 +89,7 @@ class BankUsers:
         BankUsers.UserList[name] = self
 
     def userBalance(self):
-        print("*********************************")
+        print("****************************")
         print(f"      {self.userName}      ")
         self.accounts.display_account_info()
 
@@ -104,20 +104,29 @@ class BankUsers:
     def userYieldInt(self):
         self.accounts.yeild_interest()
     @classmethod
+    def transfer_money_savings(cls, from_savings, to_savings, amount):
+        transfer_from = cls.UserList[from_savings].accounts
+        transfer_to = cls.UserList[to_savings].accounts
+        transfer_from.savingsacct -= amount
+        transfer_to.savingsacct += amount
+        print("//////////////////////////////////////////////////////////////////")
+        print(f"//A checking transfer of ${amount} has been made from {from_savings} to {to_savings}//")
+        print("////////////////////////////////////////////////////////////////")
+    @classmethod
     def transfer_money_checking(cls, from_acct, to_account, amount):
-        transfer_from = cls.UserList[from_acct].accounts
-        transfer_to = cls.UserList[to_account].accounts
-        transfer_from.balance -= amount
-        transfer_to.balance += amount
-        print("////////////////////////////////////////////////////////")
-        print(f"//A transfer of ${amount} has been made from {from_acct} to {to_account}//")
-        print("////////////////////////////////////////////////////////")
-
+            transfer_from = cls.UserList[from_acct].accounts
+            transfer_to = cls.UserList[to_account].accounts
+            transfer_from.balance -= amount
+            transfer_to.balance += amount
+            print("//////////////////////////////////////////////////////////////////")
+            print(f"//A checking transfer of ${amount} has been made from {from_acct} to {to_account}//")
+            print("////////////////////////////////////////////////////////////////")
 
 user_Harold = BankUsers("Harold", "Hbf20c@gmail.com", 500, .07, 5000, .03)
 user_Jash = BankUsers("Jash", "Mustang5.0@aol.com", 300, .02, 0, 0.05 )
 user_Harold.userBalance()
 user_Jash.userBalance()
-BankUsers.transfer_money_checking("Harold", "Jash", 500)
+BankUsers.transfer_money_checking("Jash", "Harold", 500)
 user_Harold.userBalance()
 user_Jash.userBalance()
+BankUsers.transfer_money_savings("Harold", "Jash", 300)
