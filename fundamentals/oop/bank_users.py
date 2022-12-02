@@ -47,16 +47,22 @@ class BankAccount:
         print("------------------------")
         print("Your account information")
         print("------------------------")
-        print("------------------------")
+        print("\n")
         print("Checking Account Balance")
         print("------------------------")
+        print("\n")
         print(f"Remaining Balance: ${self.balance}")
+        print("                        ")
         print(f"Interest Rate: {round((self.interest * 100), 2)}%")
+        print("\n")
         print("------------------------")
         print("Savings Account Balance")
         print("------------------------")
+        print("\n")
         print(f"Remaining Balance: ${self.savingsacct}")
+        print("\n")
         print(f"Savings Interest Rate: {round((self.savingsint *100), 2)}%")
+        print("\n")
         print("------------------------")
         return self
     def yeild_interest(self):
@@ -77,6 +83,7 @@ class BankAccount:
         print("Account Balances for all accounts")
         print("************************")
         for account in cls.Total_Accounts:
+            print("\n")
             print(f"Checking Account Balance : ${account.balance}")
             print(f"Savings Account Balance : ${account.savingsacct}")
             print("------------------------")
@@ -93,6 +100,7 @@ class BankUsers:
         print("************************")
         print(f"      {self.userName}      ")
         self.accounts.display_account_info()
+        print("\n")
 
     def userDeposit(self, which_acct, deposit_amount):
         self.accounts.deposit(which_acct, deposit_amount)
@@ -111,9 +119,9 @@ class BankUsers:
         transfer_from = cls.UserList[from_savings].accounts
         transfer_to = cls.UserList[to_savings].accounts
         if (transfer_from.savingsacct - amount) < 0:
-                print("***********************")
-                print("Not enough resources!")
-                print("***********************")
+                print("<!><!><!><!><!><!><!><!><!><!")
+                print("<^> Not enough resources! <!>")
+                print("<!><!><!><!><!><!><!><!><!><!")
         else:
             transfer_from.savingsacct -= amount
             transfer_to.savingsacct += amount
@@ -129,17 +137,17 @@ class BankUsers:
             transfer_from = cls.UserList[from_acct].accounts
             transfer_to = cls.UserList[to_account].accounts
             if (transfer_from.balance - amount) < 0:
-                print("*********************")
-                print("Not enough resources!")
-                print("*********************")
+                print("<!><!><!><!><!><!><!><!><!><!")
+                print("<^> Not enough resources! <!>")
+                print("<!><!><!><!><!><!><!><!><!><!")
             else:
                 transfer_from.balance -= amount
                 transfer_to.balance += amount
-                print("<^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^>")
-                print("<^>                                                                        <^>")
-                print(f"<^> A checking account transfer of ${amount} has been made from {from_acct} to {to_account}  <^>")
-                print("<^>                                                                        <^>")
-                print("<^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^>")
+                print("<*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*>")
+                print("<*>                                                                        <*>")
+                print(f"<*> A checking account transfer of ${amount} has been made from {from_acct} to {to_account}  <*>")
+                print("<*>                                                                        <*>")
+                print("<*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*>")
     
 user_Harold = BankUsers("Harold", "Hbf20c@gmail.com", 500, .07, 5000, .03)
 user_Jash = BankUsers("Jash", "Mustang5.0@aol.com", 300, .02, 3000, 0.05 )
@@ -152,6 +160,6 @@ BankUsers.transfer_money_checking("Jash", "Harold", 500)
 user_Harold.userBalance()
 user_Jash.userBalance()
 BankUsers.transfer_money_savings("Harold", "Jash", 300)
-BankUsers.transfer_money_savings("Harold", "Jash", 100)
+BankUsers.transfer_money_savings("Harold", "Jash", 5000)
 user_Harold.userBalance()
 user_Jash.userBalance()
