@@ -27,17 +27,16 @@ class BankAccount:
         #should subtract balance to the amount
         #should also check if sufficient balance is present prior to withdrawal
         validated_acct = which_acct.lower()
-        print(which_acct)
         if(self.balance < amount):
             print("Insuffient funds homie, make that cheddar first")
             return self
         else:
-            if(validated_acct == "savings"):
+            if validated_acct == "savings":
                 print(f"A withdrawal of ${amount} has been made from your {validated_acct} account")
                 print("------------------------")
                 self.savingsacct -= amount
-            elif(validated_acct == "checking"):
-                print(f"A withdrawal of ${amount} has been made from your {validated_acct}account")
+            elif validated_acct == "checking":
+                print(f"A withdrawal of ${amount} has been made from your {validated_acct} account")
                 print("------------------------")
                 self.balance -= amount
             else:
@@ -62,6 +61,7 @@ class BankAccount:
         return self
     def yeild_interest(self):
         #applies interest to balance
+        #checks if there is any money to give interest to
         interest_yield_amount = round((self.balance * self.interest), 3)
         if(self.balance <= 0):
             print("You aint got no money for interest, homie")
@@ -75,13 +75,14 @@ class BankAccount:
     @classmethod
     def display_all_balances(cls):
         print("Account Balances for all accounts")
-        print("****************************")
+        print("************************")
         for account in cls.Total_Accounts:
-            print(f"Account Balance : ${account.balance}")
+            print(f"Checking Account Balance : ${account.balance}")
+            print(f"Savings Account Balance : ${account.savingsacct}")
             print("------------------------")
 
 class BankUsers:
-    UserList = {}
+    UserList = {} #adds user data to dictionary that will link bank accounts to user names
     def __init__(self, name, email, savings_deposit=0, savings_interest=0.1, deposit=0, interest=.01):
         self.userName = name
         self.email = email
@@ -89,7 +90,7 @@ class BankUsers:
         BankUsers.UserList[name] = self
 
     def userBalance(self):
-        print("****************************")
+        print("************************")
         print(f"      {self.userName}      ")
         self.accounts.display_account_info()
 
@@ -103,30 +104,54 @@ class BankUsers:
     
     def userYieldInt(self):
         self.accounts.yeild_interest()
-    @classmethod
+    @classmethod #ALL CLASS METHODS MUST BE UNDER THIS DECORATOR
+    #transfer money from savings between accounts
+    #account names must match when passing arguments
     def transfer_money_savings(cls, from_savings, to_savings, amount):
         transfer_from = cls.UserList[from_savings].accounts
         transfer_to = cls.UserList[to_savings].accounts
-        transfer_from.savingsacct -= amount
-        transfer_to.savingsacct += amount
-        print("//////////////////////////////////////////////////////////////////")
-        print(f"//A checking transfer of ${amount} has been made from {from_savings} to {to_savings}//")
-        print("////////////////////////////////////////////////////////////////")
-    @classmethod
+        if (transfer_from.savingsacct - amount) < 0:
+                print("***********************")
+                print("Not enough resources!")
+                print("***********************")
+        else:
+            transfer_from.savingsacct -= amount
+            transfer_to.savingsacct += amount
+            print("<^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^><^><^><^")
+            print("<^>                                                                       <^>")
+            print(f"<^> A savings account transfer of ${amount} has been made from {from_savings} to {to_savings}  <^>")
+            print("<^>                                                                       <^>")
+            print("<^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^><^><^><^")
+    @classmethod #ALL CLASS METHODS MUST BE UNDER THIS DECORATOR
+    #transfer money from checking between accounts
+    #account names must match when passing arguments
     def transfer_money_checking(cls, from_acct, to_account, amount):
             transfer_from = cls.UserList[from_acct].accounts
             transfer_to = cls.UserList[to_account].accounts
-            transfer_from.balance -= amount
-            transfer_to.balance += amount
-            print("//////////////////////////////////////////////////////////////////")
-            print(f"//A checking transfer of ${amount} has been made from {from_acct} to {to_account}//")
-            print("////////////////////////////////////////////////////////////////")
-
+            if (transfer_from.balance - amount) < 0:
+                print("*********************")
+                print("Not enough resources!")
+                print("*********************")
+            else:
+                transfer_from.balance -= amount
+                transfer_to.balance += amount
+                print("<^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^>")
+                print("<^>                                                                        <^>")
+                print(f"<^> A checking account transfer of ${amount} has been made from {from_acct} to {to_account}  <^>")
+                print("<^>                                                                        <^>")
+                print("<^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^><^>^<><^><^>")
+    
 user_Harold = BankUsers("Harold", "Hbf20c@gmail.com", 500, .07, 5000, .03)
-user_Jash = BankUsers("Jash", "Mustang5.0@aol.com", 300, .02, 0, 0.05 )
+user_Jash = BankUsers("Jash", "Mustang5.0@aol.com", 300, .02, 3000, 0.05 )
 user_Harold.userBalance()
 user_Jash.userBalance()
+user_Harold.userWithdraw("checking", 300)
+user_Harold.userDeposit("checking", 2)
+user_Jash.userYieldInt()
 BankUsers.transfer_money_checking("Jash", "Harold", 500)
 user_Harold.userBalance()
 user_Jash.userBalance()
 BankUsers.transfer_money_savings("Harold", "Jash", 300)
+BankUsers.transfer_money_savings("Harold", "Jash", 100)
+user_Harold.userBalance()
+user_Jash.userBalance()
