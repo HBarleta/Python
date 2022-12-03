@@ -29,8 +29,10 @@
 <body>
     <h1>Welcome!</h1>
     <div class="container">
+        {{ box = <div class="blue-box"></div> }}
+
         {% for divs in range(0,x) %}
-        <div class="blue-box"></div>
+        box
         {% endfor %}
     </div>
     
