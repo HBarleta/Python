@@ -1,0 +1,21 @@
+
+table{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    text-align: center;
+    font-size: 30pt;
+}
+
+
+th, td{
+    height: auto;
+    border-bottom: 2px solid black;
+    padding: 20px;
+}
+
+th {
+    background-color: silver;
+    color: rgb(127, 127, 13);
+    font-family: monospace;
+}
