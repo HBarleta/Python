@@ -26,26 +26,19 @@
 </style>
 <body>
     <h1>Checker Board</h1>
-<!-- 
-list of jinja variables:
-color 1 <div class="color1"></div>
-color 2 <div class="color2"></div>
-rows iterator (Y)
-column iterator (X)
-background colors1
-background colors2
 
--->
 <!-- need to refactor this code since both of these are very similar -->
 
     <div class="container">
         <!-- this block of code needs a Y variable to determine # of rows -->
         {% for row in range(0,y) %}
+            <!-- this conditional will alternate color scheme for checker look -->
             {% if row % 2 == 0 %}
             <div class="row">
                     <!-- this block of code needs a (X)variable that will determine
                     # of columns using rang(0,*variableX*) -->
                 {% for box in range(0, x) %}
+                <!-- this conditional will alternate colors based on X value -->
                     {% if box % 2 == 0 %}
                     <div class="color1"></div>
                     {% else %}
@@ -55,8 +48,6 @@ background colors2
             </div>
             {% else %}
                 <div class="row">
-                    <!-- this block of code needs a (X)variable that will determine
-                    # of columns using rang(0,*variableX*) -->
                 {% for box in range(0, x) %}
                     {% if box % 2 == 0 %}
                     <div class="color2"></div>
