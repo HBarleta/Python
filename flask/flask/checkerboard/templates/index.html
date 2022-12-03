@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckerBoard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
+</head>
+<style>
+    .color1 {
+        width: 100px;
+        height: 100px;
+        /* this background color needs to be a jinja variable for color scheme */
+        background-color: {{color1}};
+        display: inline-block;  
+    }
+
+    .color2 {
+        width: 100px;
+        height: 100px;
+        /* background color needs to be a jinja variable for color scheme */
+        background-color: {{color2}}; 
+        display: inline-block;
+    }
+</style>
+<body>
+    <h1>Checker Board</h1>
+<!-- 
+list of jinja variables:
+color 1 <div class="color1"></div>
+color 2 <div class="color2"></div>
+rows iterator (Y)
+column iterator (X)
+background colors1
+background colors2
+
+-->
+<!-- need to refactor this code since both of these are very similar -->
+
+    <div class="container">
+        <!-- this block of code needs a Y variable to determine # of rows -->
+        {% for row in range(0,y) %}
+            {% if row % 2 == 0 %}
+            <div class="row">
+                    <!-- this block of code needs a (X)variable that will determine
+                    # of columns using rang(0,*variableX*) -->
+                {% for box in range(0, x) %}
+                    {% if box % 2 == 0 %}
+                    <div class="color1"></div>
+                    {% else %}
+                    <div class="color2"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% else %}
+                <div class="row">
+                    <!-- this block of code needs a (X)variable that will determine
+                    # of columns using rang(0,*variableX*) -->
+                {% for box in range(0, x) %}
+                    {% if box % 2 == 0 %}
+                    <div class="color2"></div>
+                    {% else %}
+                    <div class="color1"></div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
