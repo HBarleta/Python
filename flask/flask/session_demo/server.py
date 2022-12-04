@@ -11,8 +11,8 @@ def counter():
 @app.route('/process', methods=['POST'])
 def display_form():
     print(request.form)
-    session['name'] = request.form['name']
-    session['cuisine'] = request.form['cuisine'] 
+    session['name'] = request.form['name'] #this name is what it was labeled on the form
+    session['cuisine'] = request.form['cuisine']  #this name is what it was labled in the form
     return redirect('/display')
     # return render_template("display.html", name=request.form['name'], cuisine=request.form['cuisine'])
     
@@ -22,7 +22,7 @@ def display_results():
     if 'name' in session:
         name = session['name']
     else:
-        name = "not provided"
+        name = "not provided" #this session was referred in the HTML as session.cuisine jinja variable
     if not 'cuisine' in session:
         session['cuisine'] = "not provided"
     return render_template("display.html", name=name)

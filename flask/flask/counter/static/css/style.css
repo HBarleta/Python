@@ -1,0 +1,13 @@
+h1, p {
+    font-size: 30pt;
+    text-align: center;
+    margin: 30px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
