@@ -8,12 +8,19 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-        <h1>Counter</h1>
-        <!-- insert jinja variable to count clicks -->
-        <p>{{ counter }}</p>
-    <form action="/count" method="POST">
-        <button name="click">Click</button>
-        <button name="reset">Reset</button>
-    </form>
+    <h1>Counter</h1>
+    <!-- insert jinja variable to count clicks -->
+    <!-- this jinja variable is linked to home() function on root route which is linked to global variable "visits" -->
+    <p>{{count}}</p> 
+    <!-- form to store if this button is clicked on session -->
+    <div class="container">
+        <form action="/count" method="POST">
+            <!-- POST method determines what type of action this form does -->
+            <button name="click">Click</button>
+            <!-- "name" is the key that will be saved in the session dict when this form is POST'd -->
+        </form>
+        <!-- reset button goes here -->
+        <a href="destroy_session"><button>Reset!</button></a>
+    </div>  
 </body>
 </html>
