@@ -25,7 +25,7 @@ class Users:
     @classmethod
     def create(cls, data):
         query = """
-            INSERT INTO users (first_name, last_name, email)
-            VALUES (%(first_name)s,%(last_name)s,%(email)s);
+            INSERT INTO users (id, first_name, last_name, email)
+            VALUES (%(id)s,%(first_name)s,%(last_name)s,%(email)s);
         """
         return connectToMySQL("users_schema").query_db(query, data)
