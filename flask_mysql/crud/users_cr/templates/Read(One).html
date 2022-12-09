@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container m-auto">
+        <!-- add jinja variable for this user's name -->
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+            <h1>USER {{one_user.user_id}}</h1>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">FULL NAME: {{one_user.first_name}} {{one_user.last_name}}</li>
+              <li class="list-group-item">EMAIL: {{one_user.email}}</li>
+              <li class="list-group-item">Last updated on: {{one_user.updated_at}}</li>
+            </ul>
+          </div>
+        </p></a><a href="/users/edit/{{one_user.user_id}}"><p class="d-inline">Edit | </p></a><a href="/users/delete/{{one_user.user_id}}"><p class="d-inline">Delete</p></a></td>
+
+        <h1 class="p-3"></h1>   
+                <!-- jinja varialbe for ID -->
+                <!-- jinja variable for full name -->
+                <h3></h3>
+                <!-- jinja variable for email -->
+                <h3></h3>
+                <!-- jinja variable for created at -->
+                <h3> </h3>
+        <a href="/">Home</a>
+    </div>
+</body>
+</html>

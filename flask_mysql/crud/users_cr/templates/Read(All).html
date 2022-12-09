@@ -17,22 +17,26 @@
                 <th scope="col">Full Name</th>
                 <th scope="col">Email Address</th>
                 <th scope="col">Created_At</th>
+                <th>ACIONS</th>
             </thead>
             
             <!-- jinja for loop to iterate and print this block -->
             {% for one_user in all_users %}
             <tr scope="row" class="table-striped">
                 <!-- jinja varialbe for ID -->
-                <td>{{one_user.id}}</td> 
+                <td>{{one_user.user_id}}</td> 
                 <!-- jinja variable for full name -->
                 <td>{{one_user.first_name}} {{one_user.last_name}}</td>
                 <!-- jinja variable for email -->
                 <td>{{one_user.email}}</td>
                 <!-- jinja variable for created at -->
                 <td>{{one_user.created_at}}</td>
+                <td><a href="/users/show/one/{{one_user.user_id}}"><p class="d-inline" >Show | </p></a><a href="/users/edit/{{one_user.user_id}}"><p class="d-inline">Edit | </p></a><a href="/users/delete/{{one_user.user_id}}"><p class="d-inline">Delete</p></a></td>
+
             </tr>
             {% endfor %}
             <!-- jinja for loop to iterate and print this block -->
+            
         </table>
         <a href="/users/new"><button class="btn my-2 btn-primary">Add a New User</button></a>
     </div>
