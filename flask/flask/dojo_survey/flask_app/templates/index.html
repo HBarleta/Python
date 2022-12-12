@@ -13,6 +13,9 @@
         <h1 class="text-center text-light">Dojo Survey</h1>
         <!-- action needs to direct to 'info' page and display results of the form -->
         <form action="/gather" method="POST">
+            {% for message in get_flashed_messages(category_filter=['reg'])%}
+                    <p class="text-danger">{{message}}</p>
+                {% endfor %}
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Your Name:</span>
                 <!-- name for session key -->
@@ -21,24 +24,24 @@
             <label for="location">Dojo Location</label>
             <!-- name for session key -->
             <select name="location" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option value="San-Jose">San Jose</option>
-                <option value="Los-Angeles">Los Angeles</option>
-                <option value="New-York">New York</option>
+                <option value="San Jose">San Jose</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="New York">New York</option>
                 <option value="Austin">Austin</option>
             </select>
             <label for="fav-language">Favorite Programming Language</label>
             <!-- name for session key -->
-            <select name="fav-language" id="fav-language" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option value="Javascript">Javascript</option>
-                <option value="Python">Python</option>
-                <option value="C#">C#</option>
-                <option value="Java">Java</option>
+            <select name="language" id="fav-language" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option name="Javascript" value="Javascript">Javascript</option>
+                <option name="Python" value="Python">Python</option>
+                <option name="C#" value="C#">C#</option>
+                <option name="Java" value="Java">Java</option>
             </select>
             
             <div class="mb-3">
                 <label for="comments" class="form-label">Comments (optional)</label>
                 <!-- name for session key -->
-                <textarea name="comments" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
               <!-- this button will submit information and store it in session -->
             <button type="submit" class="btn btn-warning">Submit</button>

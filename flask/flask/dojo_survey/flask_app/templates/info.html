@@ -10,41 +10,40 @@
 <body>
     <div class="container bg-primary border border-5 h-75">
         <h1 class="text-left m-4 text-light">You Submitted</h1>
-            <div class="row text-center">
-                <div class="col-4 text-warning">
+        <div class="row text-center">
+            <div class="col-4 text-warning ">
                 <h3>Name:</h3>
-                </div>
-                <div class="col text-warning">
-                    <!-- jinja variable here -->
-                    <h4>{{name}}</h4>
-                </div>
-            </div><div class="row text-center text-warning">
-                <div class="col-4 text-warning">
-                <h3>Location:</h3>
-                </div>
-                <div class="col text-warning">
-                    <!-- jinja variable here -->
-                    <h4>{{location}}</h4>
-                </div>
-            </div><div class="row text-center text-warning">
-                <div class="col-4 text-warning">
-                <h3>Favorite Language:</h3>
-                </div>
-                <div class="col text-warning">
-                    <!-- jinja variable here -->
-                    <h4>{{language}}</h4>
-                </div>
-            </div><div class="row text-center text-warning">
-                <div class="col-4 text-warning">
-                <h3>Comments:</h3>
-                </div>
-                <div class="col text-warning">
-                    <!-- jinja variable here -->
-                    <h4>{{comments}}</h4>
-                    <!-- button should clear session and return to root route with a cleared form -->
-                    <a href="/"><button type="button" class="btn btn-warning btn-lg m-2">Go Back</button></a>
-                </div>
             </div>
+            <div class="col text-warning">
+                
+                <h3>{{results.name}}</h3>
+            </div>
+        </div>        
+        <div class="row text-center">
+            <div class="col-4 text-warning">
+                <h3>Location:</h3>
+            </div>
+            <div class="col text-warning">
+                <h3>{{results.location}}</h3>
+            </div>
+        <div class="row text-center">
+            <div class="col-4 text-warning">
+                <h3>Favorite Language:</h3>
+            </div>
+            <div class="col text-warning">
+                <h3>{{results.language}}</h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-4 text-warning">
+                <h3>Comments:</h3>
+            </div>
+            <div class="col text-warning">
+                <h3>{{results.comment}}</h3>
+            </div>
+        </div>
+            <!-- button should clear session and return to root route with a cleared form -->
+                    <a href="/"><button type="button" class="btn btn-warning btn-lg m-2">Go Back</button></a>
     </div>
 </body>
 </html>
