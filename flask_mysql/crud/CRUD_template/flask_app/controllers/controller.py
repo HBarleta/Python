@@ -8,11 +8,10 @@ from flask_app import app
 # imports init file from flask app
 from flask import flash
 # import flash for incorrect inputs
-
-# template for bcrypt 
 from flask_bcrpyt import Bcrypt
 bcrypt = Bcrypt(app)
-# template for bcrypt 
+# template for bcrypt
+
 
 
 @app.route('/')

@@ -1,6 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 # imports mysqlconnection file for DB queries
-
+from flask_app import app
 from flask_app import DATABASE
 #imports global variable name for DB schema
 from flask import flash
@@ -10,10 +10,13 @@ import re
 # DO NOT FORGET TO UPDATE FILE NAME TO REFLECT PROJECT USING PROPER 
 # NAMING CONVENTION
 
+# template for bcrypt 
+ 
+
 ALPHANUMERIC = re.compile(r"^[a-zA-Z0-9]+$")
 # regex for alphanumeric inputs in validator
 # for other regex check w3 schools for other regex
-EMAIL_REGEX = re.complie(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 # email regex for validator
 
 
