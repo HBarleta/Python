@@ -11,8 +11,8 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-6">
-                <h1>Add a New Dojo!</h1>
+            <div class="col-6 p-3">
+                <h1 class="mb-3">Add a New Dojo!</h1>
                 <form action="dojo/create" method="POST">
                     <div class="input-group input-group-lg">
                         <span class="input-group-text" id="inputGroup-sizing-lg">Dojo Name:</span>
@@ -21,14 +21,19 @@
                       <button class="btn btn-primary mt-4">Add New Dojo</button>
                 </form>
             </div>
-            <div class="col-6">
-                <h1>All Dojos</h1>
+            <div class="col-6 p-3">
+                <h1 class="text-center mb-3">All Dojos</h1>
+                <ul class="list-group ">
                 {% for one_dojo in all_dojos %}
-               <a href="/dojo/show/{{one_dojo.id}}"><p>{{one_dojo.name}}</p></a>
+                    
+                    <li class="list-group-item list-group-item-action"><a class="text-decoration-none text-dark" href="/dojo/show/{{one_dojo.id}}"><h3>{{one_dojo.name}}</h3></a></li>
                 {% endfor %}
+            </ul>
+            <a href="/ninja/add"><button class="btn btn-primary mt-3">Add a Ninja</button></a>
             </div>
-            <a href="/ninja/add">Add a Ninja</a>
+            
         </div>
+        
     </div>
     
 </body>

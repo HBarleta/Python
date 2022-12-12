@@ -11,8 +11,9 @@
 <body>
 
 <!-- template for logins and registration-->
-    <div class="container">
+    <div class="container row">
         <h1 class="text-center">New Ninjas</h1>
+            <div class="col-6">
                 <form action="/ninja/create" method="post">
                 {% for message in get_flashed_messages(category_filter=['reg']) %}
                     <p class="text-danger">{{message}}</p>
@@ -37,7 +38,8 @@
                     </select>
                     <button class="btn btn-primary">Register</button>
                 </form>
-        <a class="text-center" href="/">Home</a>
+            </div>
+        <a href="/">Home</a>
     </div>
 
 </body>
