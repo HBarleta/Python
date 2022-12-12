@@ -32,14 +32,14 @@ class Ninja:
         """
         return connectToMySQL(DATABASE).query_db(query, data)
     
-    @classmethod
-    def get_ninjas_in_dojos(cls, data):
-        query = """
-        SELECT * FROM ninjas WHERE dojo_id = %(id)s;
-        """
-        results = connectToMySQL(DATABASE).query_db(query,data)
-        all_ninjas_in_dojo = []
-        for one_row in results:
-            this_ninja_instance = cls(one_row)
-            all_ninjas_in_dojo.append(this_ninja_instance)
-        return all_ninjas_in_dojo
+    # @classmethod
+    # def get_ninjas_in_dojos(cls, data):
+    #     query = """
+    #     SELECT * FROM ninjas WHERE dojo_id = %(id)s;
+    #     """
+    #     results = connectToMySQL(DATABASE).query_db(query,data)
+    #     all_ninjas_in_dojo = []
+    #     for one_row in results:
+    #         this_ninja_instance = cls(one_row)
+    #         all_ninjas_in_dojo.append(this_ninja_instance)
+    #     return all_ninjas_in_dojo

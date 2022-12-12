@@ -9,12 +9,9 @@
 </head>
 <body>
     <h1>{{one_dojo.name}}</h1>
-        
-
-        {% for one_ninja in all_ninjas%}
-        <p>{{one_ninja.first_name}} {{one_ninja.last_name}} {{one_ninja.age}}</p>
-        {% endfor %}
-
+    {% for ninja in one_dojo.ninjas %}
+        <p>{{ninja.first_name}} {{ninja.last_name}} {{ ninja.age}}</p>
+    {% endfor %}
         <a href="/">Home</a>
 </body>
 </html>
