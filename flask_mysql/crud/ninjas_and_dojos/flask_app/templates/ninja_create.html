@@ -11,6 +11,7 @@
     <div class="container row">
         <h1 class="text-center">New Ninjas</h1>
             <div class="col-6">
+                <!-- form to create a ninja -->
                 <form action="/ninja/create" method="post">
                 {% for message in get_flashed_messages(category_filter=['reg']) %}
                     <p class="text-danger">{{message}}</p>
@@ -27,7 +28,7 @@
                         <span class="input-group-text" id="inputGroup-sizing-sm">Age:</span>
                         <input name="age" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                     </div>
-                    <!-- need a drop down menu with a list of available dojos -->
+                    <!-- this loop will create options for all dojos -->
                     <select name="dojo_id" id="dojos">
                         {% for one_dojo in all_dojos %}
                         <option value="{{one_dojo.id}}">{{one_dojo.name}}</option>

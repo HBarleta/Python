@@ -23,8 +23,10 @@
             <div class="col-6 p-3">
                 <h1 class="text-center mb-3">All Dojos</h1>
                 <ul class="list-group ">
+                    <!-- for loop creating a list of ALL dojos in the DB -->
                 {% for one_dojo in all_dojos %}
-                    <li class="list-group-item list-group-item-action"><a class="text-decoration-none text-dark" href="/dojo/show/{{one_dojo.id}}"><h3>{{one_dojo.name}}</h3></a></li>
+                    <!-- dojos are links to route to display one dojo page with all ninjas in that dojo -->
+                    <li class="list-group-item list-group-item-action text-capitalize"><a class="text-decoration-none text-dark" href="/dojo/show/{{one_dojo.id}}"><h3>{{one_dojo.name}}</h3></a></li>
                 {% endfor %}
             </ul>
             <a href="/ninja/add"><button class="btn btn-primary mt-3">Add a Ninja</button></a>
