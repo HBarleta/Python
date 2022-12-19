@@ -48,6 +48,22 @@ def dashboard():
     logged_user = User.get_by_id(data)
     return render_template("dashboard.html", logged_user=logged_user)
 
+@app.route('/users/login', methods=['POST'])
+def log_user():
+    data = {
+        'email' : request.form['email']
+    }
+    user_in_db = User.get_by_email(data)
+    if not user_in_db:
+        flash("Invalid Email", 'log')
+        return redirect('/')
+    if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
+        flash("Invalid Password", 'log')
+        return redirect('/')
+    session['user_id'] = user_in_db.id
+    return redirect('/login/dashboard')
+    
+
 @app.route('/user/logout')
 def logout():
     # this will delete session cookie and redirect to root route

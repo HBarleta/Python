@@ -46,12 +46,11 @@ class User:
             SELECT * from users WHERE email = %(email)s;
         """
         results = MySQLConnection(DATABASE).query_db(query, data)
-        
         if results:
-            cls(results[0])
+            return cls(results[0])
         else:
             return False
-        
+
     @staticmethod
     def validator(form_data):
         is_valid = True

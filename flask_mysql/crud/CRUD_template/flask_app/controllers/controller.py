@@ -33,13 +33,11 @@ def reg_user():
         return redirect('/')
     # hashing the password here
     hashed_pass = bcrypt.generate_password_hash(request.form['password'])
-    
     data = {
         **request.form,
         'password' : hashed_pass,
         'conf_pass' : hashed_pass 
         #will hash confirm password also
-        
     }
     # creating the account with hashed pass
     logged_user_id = User.create(data)
@@ -51,6 +49,7 @@ def reg_user():
     
 @app.route('/users/login', methods=['POST'])
 def log_user():
+    print("user loggin in!******")
     data = {
         'email' : request.form['email']
     }
@@ -58,10 +57,11 @@ def log_user():
     if not user_in_db:
         flash("invalid credentials", 'log')
         return redirect('/')
-    if not bcrypt.check_password_hash(user_in_db.password, request.form['password'])
+    if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
         flash("invalid credentials", 'log')
         return redirect('/')
     session['user_id'] = user_in_db.id
+    print("login successsful")
     return render_template('/dashboard')
     
     
