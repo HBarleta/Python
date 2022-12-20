@@ -24,7 +24,13 @@ const expected3 = 0;
  */
 function recursiveSigma(num) {
   //Base case?
+
+  if (num <= 0){
+    return 0;
+  }
+num = Math.floor(num)
   //Any logic?
+return num + recursiveSigma(num-1)
   //Recursion?
 }
 
@@ -57,6 +63,7 @@ const expectedC = 0;
  */
 function sumArr(nums) {
   //Your code here
+
   //Base case?
   //Any more logic?
   //Recursive call?
